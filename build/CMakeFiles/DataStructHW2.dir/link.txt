@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\DataStructHW2.dir/objects.a
+C:\TDM-GCC-64\bin\ar.exe qc CMakeFiles\DataStructHW2.dir/objects.a @CMakeFiles\DataStructHW2.dir\objects1.rsp
+C:\TDM-GCC-64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\DataStructHW2.dir/objects.a -Wl,--no-whole-archive -o DataStructHW2.exe -Wl,--out-implib,libDataStructHW2.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\DataStructHW2.dir\linklibs.rsp
