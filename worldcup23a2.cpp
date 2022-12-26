@@ -92,8 +92,21 @@ output_t<int> world_cup_t::get_player_cards(int playerId)
 
 output_t<int> world_cup_t::get_team_points(int teamId)
 {
-	// TODO: Your code goes here
-	return 30003;
+	if(teamId <= 0){
+		output_t<int>(StatusType::INVALID_INPUT);
+	}
+	try
+	{
+		AVLNode<int,Team>* teamFound = teamsById.find(teamsById.get_root(),teamId);
+		if(!teamFound){
+			return output_t<int>(StatusType::FAILURE);
+		}
+		return teamFound->data.getPoints();
+	}
+	catch(...)
+	{
+		return output_t<int>(StatusType::ALLOCATION_ERROR);
+	}
 }
 
 output_t<int> world_cup_t::get_ith_pointless_ability(int i)

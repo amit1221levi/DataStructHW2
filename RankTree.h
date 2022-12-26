@@ -48,7 +48,7 @@ public:
     void insert(K key,V& value);
     void remove(const K key);
     AVLNode<K,V>* get_root() const { return root_node; }
-    AVLNode<K,V>* find(AVLNode<K,V>* root, const V& value) const;
+    AVLNode<K,V>* find(AVLNode<K,V>* root, const K key) const;
     int get_height(AVLNode<K,V>* root) const;
     int balance_factor(AVLNode<K,V>* root) const;
     void fix_parent(AVLNode<K,V>* root);
@@ -255,12 +255,12 @@ void RankTree<K,V>::print_inOrder(AVLNode<K,V>* root) const
 //finding the requested value in the tree, recursive function until we get to the value
 //log(n)
 template <class K,class V>
-AVLNode<K,V>* RankTree<K,V>::find(AVLNode<K,V>* root, const V& key) const
+AVLNode<K,V>* RankTree<K,V>::find(AVLNode<K,V>* root, K key) const
 {
     fixNodeParent(root, key);
     if (root != nullptr)
     {
-        if (root->getValue() == key)
+        if (root->getKey() == key)
         {
             return root; // Founds
         }
