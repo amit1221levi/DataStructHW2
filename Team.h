@@ -17,6 +17,7 @@ class Team{
     Team& operator=(const Team&) = delete;
 
     //Getters & Setters
+    int getId() const;
     int getPoints() const;
     void setPoints(int points);
     int getAbility() const;
