@@ -111,7 +111,22 @@ output_t<int> world_cup_t::get_team_points(int teamId)
 
 output_t<int> world_cup_t::get_ith_pointless_ability(int i)
 {
-	// TODO: Your code goes here
+	if(i < 0){
+		output_t<int>(StatusType::FAILURE);
+	}
+	try
+	{
+		Team& teamFound = teamsByAbility.select(i+1);
+		return teamFound.getId();
+	}
+	catch(RankTree<Pair<int,int>,Team>::NOT_EXIST())
+	{
+		output_t<int>(StatusType::FAILURE);
+	}
+	catch(...){
+		output_t<int>(StatusType::ALLOCATION_ERROR);
+	}
+	
 	return 12345;
 }
 

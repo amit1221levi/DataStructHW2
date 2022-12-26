@@ -15,6 +15,10 @@ Team::~Team(){
     delete players;
 }
 
+int Team::getId() const{
+    return id;
+}
+
 int Team::getPoints() const{
     return points;
 }
