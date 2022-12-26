@@ -16,13 +16,14 @@ class Player{
         int gamesPlayed = 0, long ability = 0, 
         long cards = 0, 
         permutation_t teamSpiritUntilPlayer = permutation_t:: neutral());
-    ~Player();
+    //TODO: Change according to implemantation
+    ~Player() = default;
     Player(const Team&) = delete;
     Player& operator=(const Player&) = delete;
 
     //Getters & Setters
     permutation_t getSpirit() const;
-    long getGamesPlayed() const; // Not included games stored at the team
+    long getGamesPlayed() const; // Not including games stored at the team
     void setGamesPlayed(long games);
     long getAbility() const;
     void setAbility(long ability);
@@ -41,7 +42,7 @@ class Player{
 
 
     Team* team;
-    UnionFind<Player>* team; 
+    UnionFind<Player>* ufTeam; 
 
 
 };
