@@ -19,10 +19,17 @@
 #include "RankTree.h"
 #include "Player.h"
 #include "Team.h"
+#include "LinkedListOneSide.h"
+#include "Pair.h"
 
 class world_cup_t {
 private:
+	RankTree<int,Team>  teamsById;
+	RankTree<Pair<int,int>,Team>  teamsByAbility; // Pair should be (ability,id)
+	LinkedList<Team> allTeamsStorage;
+	LinkedList<Player> allPlayersStorage;
 	
+
 	
 public:
 	// <DO-NOT-MODIFY> {

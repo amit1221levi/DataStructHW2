@@ -12,7 +12,43 @@ world_cup_t::~world_cup_t()
 
 StatusType world_cup_t::add_team(int teamId)
 {
-	// TODO: Your code goes here
+	if(teamId <= 0){
+		return StatusType::INVALID_INPUT;
+	}
+	Team* team = nullptr;
+	try
+	{
+		team = new Team(teamId);
+	}
+	catch(const std::exception& e)
+	{
+		return StatusType::ALLOCATION_ERROR;
+	}
+	
+	try
+	{
+		teamsById.insert(teamId,*team);
+		
+	}
+	catch(RankTree<int,Team>::ALREADY_EXIST())
+	{
+		delete team;
+		return StatusType::FAILURE;
+	}
+	catch(RankTree<int,Team>::ALLOC_ERROR()){
+		delete team;
+		return StatusType::ALLOCATION_ERROR;
+	}
+	try
+	{
+		teamsByAbility.insert(Pair<int,int> (team->getAbility(),teamId),*team);
+		allTeamsStorage.insert(team);
+	}
+	catch(...)
+	{
+		delete team;
+		return StatusType::ALLOCATION_ERROR;
+	}
 	return StatusType::SUCCESS;
 }
 

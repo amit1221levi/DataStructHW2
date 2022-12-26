@@ -34,6 +34,7 @@ public:
     LinkedList(): head(nullptr),size(0){}
     class ALREADY_EXIST{};
     class NOT_EXIST{};
+    class ALLOC_ERROR{};
     ///====================================D'tor======================================================
     //Removes data and nodes
     ~LinkedList()
@@ -51,7 +52,7 @@ public:
 
     ///=====================================insert======================================================
     //inseret a new node if its not already existing, inseration occurs in the head of the list therefore the complexity is of O(1)
-    void insert(T val)
+    void insert(T* val)
     {
         Node *node = new Node(val);
         if (head == nullptr)
