@@ -1,11 +1,11 @@
 #include "Player.h"
 
  Player::Player(
-        long id, 
+        int id, 
         permutation_t spirit,
         int gamesPlayed,
-        long ability, 
-        long cards , 
+        int ability, 
+        int cards , 
         permutation_t teamSpiritUntilPlayer):
             id(id), 
             spirit(spirit), 
@@ -20,27 +20,27 @@ permutation_t Player::getSpirit() const{
     return this->spirit;
 }
 
-long Player::getGamesPlayed() const{
+int Player::getGamesPlayed() const{
     return this->gamesPlayed;
 }
 
-void Player::setGamesPlayed(long games){
+void Player::setGamesPlayed(int games){
     this->gamesPlayed = games;
 }
 
-long Player::getAbility() const{
+int Player::getAbility() const{
     return ability;
 }
 
-void Player::setAbility(long ability){
+void Player::setAbility(int ability){
     this->ability = ability;
 }
 
-long Player::getCards() const{
+int Player::getCards() const{
     return cards;
 }
 
-void Player::setCards(long cards){
+void Player::setCards(int cards){
     this->cards = cards;
 }
 

@@ -15,7 +15,7 @@ Team::~Team(){
     delete players;
 }
 
-long Team::getPoints() const{
+int Team::getPoints() const{
     return points;
 }
 
@@ -23,7 +23,7 @@ void Team::setPoints(int points){
     this->points = points;
 }
 
-long Team::getAbility() const{
+int Team::getAbility() const{
     return ability;
 }
 
@@ -31,7 +31,7 @@ void Team::setAbility(int ability){
     this->ability = ability;
 }
 
-long Team::getPlayedGames() const{
+int Team::getPlayedGames() const{
     return playedGames;
 }
 
@@ -39,7 +39,7 @@ void Team::setPlayedGames(int games){
     this->playedGames = games;
 }
 
-long Team::getNumOfGoalKeepers() const{
+int Team::getNumOfGoalKeepers() const{
     return numOfGoalKeepers;
 }
 

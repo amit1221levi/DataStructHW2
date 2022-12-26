@@ -17,13 +17,13 @@ class Team{
     Team& operator=(const Team&) = delete;
 
     //Getters & Setters
-    long getPoints() const;
+    int getPoints() const;
     void setPoints(int points);
-    long getAbility() const;
+    int getAbility() const;
     void setAbility(int ability);
-    long getPlayedGames() const;
+    int getPlayedGames() const;
     void setPlayedGames(int games);
-    long getNumOfGoalKeepers() const;
+    int getNumOfGoalKeepers() const;
     void setNumOfGoalKeepers(int goalKeepers);
     permutation_t getTeamSpirit() const;
 
@@ -33,11 +33,11 @@ class Team{
     int getTeamSpiritualStrength() const;
 
     private:
-    long id;
-    long points;
-    long ability;
-    long playedGames;
-    long numOfGoalKeepers;
+    int id;
+    int points;
+    int ability;
+    int playedGames;
+    int numOfGoalKeepers;
     permutation_t teamSpirit;
     bool isActive;
 

@@ -16,9 +16,9 @@ template <class K,class V>
 class AVLNode
 {
 public:
-    AVLNode(K key,const V& value) : key(key), data(value), rank(1), left_node(nullptr), right_node(nullptr), parent_node(nullptr) {}
+    AVLNode(K key,V& value) : key(key), data(value), rank(1), left_node(nullptr), right_node(nullptr), parent_node(nullptr) {}
     ~AVLNode() {}
-    const V& getValue() const { return data; }
+    V& getValue() const { return data; }
     const K getKey() const { return key; }
     void setLeft(AVLNode* left) { left_node = left; }
     AVLNode* getLeft() const { return left_node; }
@@ -45,7 +45,7 @@ class RankTree
 public:
     RankTree() : root_node(nullptr) {}
     ~RankTree();
-    void insert(K key,const V& value);
+    void insert(K key,V& value);
     void remove(const V& value);
     AVLNode<K,V>* get_root() const { return root_node; }
     AVLNode<K,V>* find(AVLNode<K,V>* root, const V& value) const;
@@ -107,7 +107,7 @@ RankTree<K,V>::~RankTree()
 ///=====================================insert======================================================
 //insert new node to the tree
 template <class K,class V>
-void RankTree<K,V>::insert(K key,const V& value)
+void RankTree<K,V>::insert(K key,V& value)
 {
     AVLNode<K,V>* new_node = new (std::nothrow) AVLNode<K,V>(key,value);
 

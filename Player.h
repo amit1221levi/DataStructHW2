@@ -11,10 +11,10 @@ class Player{
     public:
     // C'tors & D'tors
     explicit Player(
-        long id, 
+        int id, 
         permutation_t spirit = permutation_t::neutral(),
-        int gamesPlayed = 0, long ability = 0, 
-        long cards = 0, 
+        int gamesPlayed = 0, int ability = 0, 
+        int cards = 0, 
         permutation_t teamSpiritUntilPlayer = permutation_t:: neutral());
     //TODO: Change according to implemantation
     ~Player() = default;
@@ -23,21 +23,21 @@ class Player{
 
     //Getters & Setters
     permutation_t getSpirit() const;
-    long getGamesPlayed() const; // Not including games stored at the team
-    void setGamesPlayed(long games);
-    long getAbility() const;
-    void setAbility(long ability);
-    long getCards() const;
-    void setCards(long cards);
+    int getGamesPlayed() const; // Not including games stored at the team
+    void setGamesPlayed(int games);
+    int getAbility() const;
+    void setAbility(int ability);
+    int getCards() const;
+    void setCards(int cards);
     permutation_t getTeamSpiritUntilPlayer() const;
     void setTeamSpiritUntilPlayer(permutation_t spirit);
 
     private:
-    long id;
+    int id;
     permutation_t spirit;
-    long gamesPlayed;
-    long ability;
-    long cards;
+    int gamesPlayed;
+    int ability;
+    int cards;
     permutation_t teamSpiritUntilPlayer; //Including this player
 
 
