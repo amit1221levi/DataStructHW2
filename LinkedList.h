@@ -50,7 +50,7 @@ public:
 
     ///=====================================insert======================================================
     //inseret a new node if its not already existing, inseration occurs in the head of the list therefore the complexity is of O(1)
-    void insert(K& key,V& val)
+    void insert(K key,V& val)
     {
         if(findVal(key)!=nullptr)
         {

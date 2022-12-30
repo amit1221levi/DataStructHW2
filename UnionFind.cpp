@@ -1,4 +1,72 @@
 #include "UnionFind.h"
+//Setters & Getters
+PlayerNode* PlayerNode::getFather(){
+    return this->father;
+}
+
+void PlayerNode::setFather(PlayerNode* node){
+    this->father = node;
+}
+
+Player* PlayerNode::getPlayer(){
+    return this->player;
+}
+
+void PlayerNode::setGroup(TeamNode* group){
+    this->group = group;
+}
+
+TeamNode* PlayerNode::getGroup(){
+    return this->group;
+}
+
+permutation_t PlayerNode::getSpiritPath(){
+    return spiritPath;
+}
+
+void PlayerNode::setSpiritPath(permutation_t path){
+    this->spiritPath = path;
+}
+
+int PlayerNode::getGamesPath() const{
+    return gamesPath;
+}
+
+void PlayerNode::setGamesPath(int games){
+    this->gamesPath = games;
+}
+
+int TeamNode::getSize() const{
+    return this->size;
+}
+
+PlayerNode* TeamNode::getRoot(){
+    return this->root;
+}
+
+void TeamNode::setRoot(PlayerNode* node){
+    this->root = node;
+}
+
+Team* TeamNode::getTeam(){
+    return this->team;
+}
+
+void TeamNode::setTeamSpirit(permutation_t spirit){
+    this->teamSpirit = spirit;
+}
+
+permutation_t TeamNode::getTeamSpirit() const{
+    return this->teamSpirit;
+}
+
+int TeamNode::getGames() const{
+    return games;
+}
+
+void TeamNode::setGames(int games){
+    this->games = games;
+}
 
 void TeamNode::addPlayer(PlayerNode* player){
     this->setTeamSpirit(this->getTeamSpirit() * (player->getPlayer()->getSpirit())); //Add player spirit to overall team spirit
@@ -13,6 +81,7 @@ void TeamNode::addPlayer(PlayerNode* player){
         player->setSpiritPath( (player->getFather()->getSpiritPath().inv()) * this->getTeamSpirit() );
         player->setGamesPath(player->getPlayer()->getLocalGames() - this->getGames() - player->getFather()->getGamesPath()); //Set the games path using the players initial games
     }
+    this->size++;
 }
 
 

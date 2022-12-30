@@ -1,11 +1,12 @@
-#ifndef __PLAYER.H
-#define __PLAYER.H
+#ifndef __PLAYER
+#define __PLAYER
 
 #include "wet2util.h"
 #include "UnionFind.h"
 #include "Team.h"
 
 class Team;
+struct PlayerNode;
 
 class Player{
     public:
@@ -44,6 +45,6 @@ class Player{
     PlayerNode* ufPlayer; 
 };
 
-int getIdFromPlayer(Player* player) {return player->getId();}; //Function for hash interface
+int getIdFromPlayer(Player* player); //Function for hash interface
 
 #endif //__PLAYER.H

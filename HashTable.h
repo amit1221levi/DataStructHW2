@@ -86,7 +86,7 @@ public:
             auto* curr = arr[i].head;
             while (curr != nullptr)
             {
-                (new_arr[hashFunc(getKey(curr->data), size)]).insert(curr->data);
+                (new_arr[hashFunc(getKey(curr->data), size)]).insert(getKey(curr->data), curr->data);
                 curr = curr->next;
             }
         }
@@ -122,7 +122,7 @@ public:
             auto* curr = arr[i].head;
             while (curr != nullptr)
             {
-                (new_arr[hashFunc(getKey(curr->data), size)]).insert(curr->data);
+                (new_arr[hashFunc(getKey(curr->data), size)]).insert(getKey(curr->data), curr->data);
                 curr = curr->next;
             }
         }

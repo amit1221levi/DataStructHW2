@@ -58,8 +58,8 @@ int Player::getGames(){
 }
 
 bool Player::isPlayerActive(){
-    findTeam(this->ufPlayer)->getTeam()->isTeamActive();
+    return findTeam(this->ufPlayer)->getTeam()->isTeamActive();
 }
 
-
+int getIdFromPlayer(Player* player) {return player->getId();};
 

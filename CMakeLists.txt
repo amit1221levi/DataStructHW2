@@ -22,4 +22,4 @@ set(CMAKE_CPP_FLAGS ${MTM_FLAGS_DEBUG})
 # Add the names of your source files here
 
 
-add_executable(main HashTable.h LinkedList.h LinkedListOneSide.h main.cpp main23a2.cpp Pair.h Player.h Player.cpp RankTree.h Team.h Team.cpp UnionFind.cpp UnionFind.h wet2util.h worldcup23a2.cpp worldcup23a2.h)
+add_executable(main HashTable.h LinkedList.h LinkedListOneSide.h main23a2.cpp Pair.h Player.h Player.cpp RankTree.h Team.h Team.cpp UnionFind.cpp UnionFind.h wet2util.h worldcup23a2.cpp worldcup23a2.h)

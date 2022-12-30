@@ -17,6 +17,8 @@
 #include "RankTree.h"
 #include "wet2util.h"
 
+struct TeamNode;
+
 struct PlayerNode
 {
     //Parameters

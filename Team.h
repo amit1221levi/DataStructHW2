@@ -1,12 +1,13 @@
 
-#ifndef __TEAM.H
-#define __TEAM.H
+#ifndef __TEAM
+#define __TEAM
 
 #include "wet2util.h"
 #include "UnionFind.h"
 #include "Player.h"
 
 class Player;
+struct TeamNode;
 
 class Team{
     public:
@@ -50,4 +51,4 @@ class Team{
 int checkMatchResult(Team& first, Team& second);
 
 
-#endif // __TEAM.H
+#endif // __TEAM

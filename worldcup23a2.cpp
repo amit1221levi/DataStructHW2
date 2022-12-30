@@ -238,7 +238,7 @@ output_t<int> world_cup_t::get_team_points(int teamId)
 		if(!teamFound){
 			return output_t<int>(StatusType::FAILURE);
 		}
-		return teamFound->data.getPoints();
+		return teamFound->getValue().getPoints();
 	}
 	catch(...)
 	{

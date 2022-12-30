@@ -16,9 +16,9 @@ template <class K,class V>
 class AVLNode
 {
 public:
-    AVLNode(K key,V& value) : key(key), data(value), rank(1), left_node(nullptr), right_node(nullptr), parent_node(nullptr) {}
+    AVLNode(K key,V& value) : key(key), data(&value), rank(1), left_node(nullptr), right_node(nullptr), parent_node(nullptr) {}
     ~AVLNode() {}
-    V& getValue() const { return data; }
+    V& getValue() const { return *data; }
     const K getKey() const { return key; }
     void setLeft(AVLNode* left) { left_node = left; }
     AVLNode* getLeft() const { return left_node; }
@@ -31,7 +31,7 @@ public:
 
     AVLNode();
 
-    V& data;
+    V* data;
     K key;
     int rank;//will help us to find the index of a certain value
     AVLNode* left_node;
@@ -85,9 +85,9 @@ void RankTree<K,V>::deleteAVLNode(AVLNode<K,V>* node)
 {
     if (node)
     {
-        if (node->getRight() != nullptrptr)
+        if (node->getRight() != nullptr)
             deleteAVLNode(node->getRight());
-        if (node->getLeft() != nullptrptr)
+        if (node->getLeft() != nullptr)
             deleteAVLNode(node->getLeft());
 
         delete node; // Post Order Deletion
@@ -218,10 +218,10 @@ void RankTree<K,V>::insertAVLNode(AVLNode<K,V>* root, AVLNode<K,V>* node_to_inse
 
     // after we added the new node we might damaged the varient of the tree, so we must balance it again
     //(the varient is that for each node the balance factor is smaller then 2 or and bigger than -2 -1=<BF<=1)
-    int balance = balanceFactor(root);
+    int balance = balance_factor(root);
     if (balance > 1)
     { //unbalanced from the left
-        if (balanceFactor(root->getLeft()) < 0)
+        if (balance_factor(root->getLeft()) < 0)
         {                                //we have to much on the right in the left subtree
             rotateLeft(root->getLeft()); //preforming another roatioation to fix balance
         }
@@ -229,7 +229,7 @@ void RankTree<K,V>::insertAVLNode(AVLNode<K,V>* root, AVLNode<K,V>* node_to_inse
     }
     else if (balance < -1)
     { //  unbalanced from the right
-        if (balanceFactor(root->getRight()) > 0)
+        if (balance_factor(root->getRight()) > 0)
         {                                  // we have to much on the left in the right subtree
             rotateRight(root->getRight()); //preforming another roatioation to fix balance
         }
@@ -264,7 +264,7 @@ AVLNode<K,V>* RankTree<K,V>::find(AVLNode<K,V>* root, K key) const
         {
             return root; // Founds
         }
-        else if (value < root->getKey())
+        else if (key < root->getKey())
         {
             return find(root->getLeft(), key);
         }
@@ -315,8 +315,8 @@ int RankTree<K,V>::get_height(AVLNode<K,V>* root) const
     int height = 0;
     if (root != nullptr)
     {
-        int right = getHeight(root->getRight());
-        int left = getHeight(root->getLeft());
+        int right = get_height(root->getRight());
+        int left = get_height(root->getLeft());
         height = 1 + ((left > right) ? left : right);
     }
     return height;
@@ -330,7 +330,7 @@ int RankTree<K,V>::balance_factor(AVLNode<K,V>* root) const
     int balance = 0;
     if (root != nullptr)
     {
-        balance = getHeight(root->getLeft()) - getHeight(root->getRight());
+        balance = get_height(root->getLeft()) - get_height(root->getRight());
     }
     return balance;
 }
@@ -416,7 +416,7 @@ AVLNode<K,V>* RankTree<K,V>::rotateRight(AVLNode<K,V>* root)
 template <class K,class V>
 void RankTree<K,V>::remove(const K key)
 {
-    fixParent(root_node);
+    fix_parent(root_node);
     fixNodeParent(root_node, key);
     AVLNode<K,V>* node = find(root_node, key);
     if (node == nullptr)
@@ -452,7 +452,7 @@ V& RankTree<K,V>::selectNode(AVLNode<K,V>* root, int k)
     }
     if (left_rank == k - 1)
     {
-        return root->data;
+        return root->getValue();
     }
     if (left_rank > k - 1)//goLeft
     {
@@ -473,7 +473,7 @@ AVLNode<K,V>* RankTree<K,V>::deleteNode(AVLNode<K,V>* root, K key)
     { 
         root->left_node = deleteNode(root->left_node, key);
     }
-    else if (key > root->data) //key is bigger, then search right
+    else if (key > root->getKey()) //key is bigger, then search right
     { 
         root->right_node = deleteNode(root->right_node, key);
     }
@@ -504,11 +504,10 @@ AVLNode<K,V>* RankTree<K,V>::deleteNode(AVLNode<K,V>* root, K key)
         else
         {
             // the corrent node has two sons, we will replace him, so we take only the data from the minimal value from the right sub tree
-            AVLNode<K,V>* temp = minValueNode(root->right_node);
+            AVLNode<K,V>* temp = min_value_node(root->right_node);
             root->data = temp->data;
-            root->key = temp->key
+            root->key = temp->key;
             root->right_node = deleteNode(root->right_node, temp->key); // remove the node we took the data from
-
         }
     }
     //only one node in the tree, therefore we need to remove it and finish
@@ -517,21 +516,21 @@ AVLNode<K,V>* RankTree<K,V>::deleteNode(AVLNode<K,V>* root, K key)
         return nullptr;
     }
     //balance algorythem for AVL
-    int balance = balanceFactor(root);
-    if (balanceFactor(root->right_node) > 0 && balance < -1) //need to preform right the left  rotation on the tree
+    int balance = balance_factor(root);
+    if (balance_factor(root->right_node) > 0 && balance < -1) //need to preform right the left  rotation on the tree
     {
         root->right_node = rotateRight(root->right_node);
         return rotateLeft(root);
     }
-    if (balanceFactor(root->left_node) >= 0 && balance > 1) //need to preform right rotation on the tree
+    if (balance_factor(root->left_node) >= 0 && balance > 1) //need to preform right rotation on the tree
     {
         return rotateRight(root);
     }
-    if (balanceFactor(root->right_node) <= 0 && balance < -1) //need to preform left rotation on the tree
+    if (balance_factor(root->right_node) <= 0 && balance < -1) //need to preform left rotation on the tree
     {
         return rotateLeft(root);
     }
-    if (balanceFactor(root->left_node) < 0 && balance > 1) //need to preform left then right rotation on the tree
+    if (balance_factor(root->left_node) < 0 && balance > 1) //need to preform left then right rotation on the tree
     {
         root->left_node = rotateLeft(root->left_node);
         return rotateRight(root);

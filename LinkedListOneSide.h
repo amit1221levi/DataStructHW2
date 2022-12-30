@@ -44,7 +44,7 @@ public:
         {
             tmp = head;
             head = head->next;
-            delete data;
+            delete tmp->data;
             delete tmp;
         }
         head = nullptr;
@@ -79,7 +79,7 @@ public:
         Node *node = head;
         while(node != nullptr)
         {
-            out << node->(*data) << " ";
+            out << *(node->data) << " ";
             node = node->next;
         }
     }

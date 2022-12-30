@@ -67,5 +67,21 @@ bool operator<(const Pair<A,B>& first, const Pair<A,B>& second){
     return !(first>second);
 }
 
+template<class A,class B>
+bool operator==(const Pair<A,B>& first, const Pair<A,B>& second){
+    return( (first.getA() == second.getA()) && (first.getB() == second.getB()) );
+}
+
+template<class A,class B>
+bool operator<=(const Pair<A,B>& first, const Pair<A,B>& second){
+    return( (first == second) || (first < second) );
+}
+
+template<class A,class B>
+bool operator>=(const Pair<A,B>& first, const Pair<A,B>& second){
+    return( (first == second) || (first > second) );
+}
+
+
 
 #endif //Pair
