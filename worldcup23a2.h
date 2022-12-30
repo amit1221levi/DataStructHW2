@@ -28,7 +28,7 @@ private:
 	LinkedList<Player> allPlayersStorage;
 	RankTree<int,Team>  teamsById; 
 	RankTree<Pair<int,int>,Team>  teamsByAbility; // Pair should be (ability,id)
-	HashTable<Player> hash; 
+	HashTable<int,Player*> hash; //Hash Table by id
 
 	
 

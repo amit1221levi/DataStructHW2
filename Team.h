@@ -27,11 +27,15 @@ class Team{
     int getNumOfGoalKeepers() const;
     void setNumOfGoalKeepers(int goalKeepers);
     permutation_t getTeamSpirit() const;
+    TeamNode* getUfNode();
+    void setUfNode(TeamNode* ufNode);
 
     //Interface functions
     void addPlayer(Player* player);
     void deactivateTeam();
     int getTeamSpiritualStrength() const;
+    bool isTeamActive() const;
+    int getMatchCapability() const;
 
     private:
     int id;
@@ -42,6 +46,8 @@ class Team{
     bool isActive;
     TeamNode* ufNode;
 };
+
+int checkMatchResult(Team& first, Team& second);
 
 
 #endif // __TEAM.H

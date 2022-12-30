@@ -15,16 +15,17 @@
 #include <iostream>
 ///==================================DoublyLinkedList======================================================
 //implementation of a generic double sides liked list
-template<class T>
+template<class K,class V>
 class DoublyLinkedList
 {
     class Node
     {
     public:
-        T& data;
+        V& data;
+        K& key;
         Node* next;
         Node* prev;
-        Node(T& val): data(val), next(nullptr), prev(nullptr) {}
+        Node(K& key,V& val): data(val), key(key), next(nullptr), prev(nullptr) {}
     };
 public:
     Node *head;//the first node of the list
@@ -49,13 +50,13 @@ public:
 
     ///=====================================insert======================================================
     //inseret a new node if its not already existing, inseration occurs in the head of the list therefore the complexity is of O(1)
-    void insert(T val)
+    void insert(K& key,V& val)
     {
-        if(findVal(val)!=nullptr)
+        if(findVal(key)!=nullptr)
         {
             throw (ALREADY_EXIST());
         }
-        Node *node = new Node(val);
+        Node *node = new Node(key, val);
         if (head == nullptr)
         {
             head = node;
@@ -70,9 +71,9 @@ public:
     }
 ///=====================================deleteVal======================================================
     //remove a node if its existing, removal demends going through all of the list therefore the complexity is of O(n)
-    void deleteVal(T val)
+    void deleteVal(K& key)
     {
-        Node* find = findVal(val);
+        Node* find = findVal(key);
         if(find==nullptr)
             throw(NOT_EXIST());
         Node *tmp = head;
@@ -104,18 +105,18 @@ public:
     }
 
 ///=====================================operator_<<_======================================================
-    friend std::ostream & operator<<(std::ostream & os, const DoublyLinkedList<T> & dll){
+    friend std::ostream & operator<<(std::ostream & os, const DoublyLinkedList<K,V> & dll){
         dll.display(os);
         return os;
     }
 
 ///=====================================findVal======================================================
-    Node *findVal(T n) //returns node of the given value
+    Node *findVal(K& key) //returns node of the given value
     {
         Node *node = head;
         while(node != nullptr)
         {
-            if(node->data == n)
+            if(node->key == key)
                 return node;
 
             node = node->next;

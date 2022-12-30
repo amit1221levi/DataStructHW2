@@ -5,14 +5,13 @@
         permutation_t spirit,
         int numGames,
         int ability, 
-        int cards , 
-        permutation_t teamSpiritUntilPlayer):
+        int cards):
             id(id), 
             spirit(spirit), 
             numGames(numGames),
             ability(ability),
             cards(cards),
-            ufPlayer(nullptr){}
+            ufPlayer(new PlayerNode(this,nullptr,nullptr)){}
 
 Player::~Player(){
     delete ufPlayer;
@@ -46,12 +45,20 @@ int Player::getLocalGames() const{
     return numGames;
 }
 
+PlayerNode* Player::getUfPlayerNode(){
+    return ufPlayer;
+}
+
 permutation_t Player::getTeamSpiritUntilPlayer(){
     return this->ufPlayer->getSpiritUntilPlayer();
 }
 
 int Player::getGames(){
     return this->ufPlayer->getOverAllGames();
+}
+
+bool Player::isPlayerActive(){
+    findTeam(this->ufPlayer)->getTeam()->isTeamActive();
 }
 
 

@@ -13,23 +13,23 @@
 #define DATASTRUCTHW2_HASHTABLE_H
 #include "LinkedList.h"
 ///========================================HashTable======================================================
-template <class T>
+template <class K,class V>
 class HashTable
 {
 public:
     class NOT_EXIST {};
-    DoublyLinkedList<T>* arr;//dynmic array of lists
+    DoublyLinkedList<K,V>* arr;//dynmic array of lists
     int size;// the hash table size, initailized with size 10
     int curr_num;//the current number of elements in the hash
     int growth_factor;//10
-    int (*getKey)(T&);
+    int (*getKey)(V);
     //the hash table is a dynamic array of double linked list of T
-    HashTable(int (*f)(T&)) : size(10), curr_num(0), growth_factor(10), getKey(f)
+    HashTable(int (*f)(V)) : size(10), curr_num(0), growth_factor(10), getKey(f)
     {
-        arr = new DoublyLinkedList<T>[size];
+        arr = new DoublyLinkedList<K,V>[size];
         for (int i = 0; i < size; i++)
         {
-            arr[i] = DoublyLinkedList<T>();
+            arr[i] = DoublyLinkedList<K,V>();
         }
     }
 
@@ -50,7 +50,7 @@ public:
 ///========================================HashTable======================================================
     HashTable(const HashTable& h) : size(h.size), curr_num(h.curr_num), growth_factor(h.growth_factor)
     {
-        arr = new DoublyLinkedList<T>[size];
+        arr = new DoublyLinkedList<K,V>[size];
         for (int i = 0; i < size; i++)
         {
             arr[i] = h.arr[i];
@@ -76,10 +76,10 @@ public:
     {
         int prev_size = size;
         size = size / growth_factor;
-        DoublyLinkedList<T>* new_arr = new DoublyLinkedList<T>[size];
+        DoublyLinkedList<K,V>* new_arr = new DoublyLinkedList<K,V>[size];
         for (int i = 0; i < size; i++)
         {
-            new_arr[i] = DoublyLinkedList<T>();
+            new_arr[i] = DoublyLinkedList<K,V>();
         }
         for (int i = 0; i < prev_size; i++)
         {
@@ -92,19 +92,18 @@ public:
         }
         this->arr = new_arr;
     }
-    DoublyLinkedList<T>* operator[](T value)
+    DoublyLinkedList<K,V>* operator[](V value)
     {
         return arr[hashFunc(getKey(value), size)];
     }
 
 ///========================================find======================================================
     //finds an objcet in the hash table return a pointer to the object
-    T& find(T value)
+    V& find(K& key)
     {
-
-        if ((arr[hashFunc(getKey(value), size)]).findVal(value) == nullptr)
+        if ((arr[hashFunc(key, size)]).findVal(key) == nullptr)
             throw(NOT_EXIST());
-        return ((arr[hashFunc(getKey(value), size)]).findVal(value))->data;
+        return (arr[hashFunc(key, size)]).findVal(key)->data;
     }
 
 ///========================================increaseSize======================================================
@@ -113,10 +112,10 @@ public:
     {
         int prev_size = size;
         size = size * growth_factor;
-        DoublyLinkedList<T>* new_arr = new DoublyLinkedList<T>[size];
+        DoublyLinkedList<K,V>* new_arr = new DoublyLinkedList<K,V>[size];
         for (int i = 0; i < size; i++)
         {
-            new_arr[i] = DoublyLinkedList<T>();
+            new_arr[i] = DoublyLinkedList<K,V>();
         }
         for (int i = 0; i < prev_size; i++)
         {
@@ -132,13 +131,13 @@ public:
 
 ///========================================insertElem======================================================
     //insert new element to the hash
-    void insertElem(T value)
+    void insertElem(V& value)
     {
         if ((curr_num / size) >= growth_factor) //alpha>=10
         {
             increaseSize();
         }
-        (arr[hashFunc(getKey(value), size)]).insert(value);
+        (arr[hashFunc(getKey(value), size)]).insert(getKey(value),value);
         curr_num++;
     }
 
@@ -156,7 +155,7 @@ public:
 
 ///========================================deleteElem======================================================
     //deletes elem from the hash
-    void deleteElem(T value)
+    void deleteElem(K& key)
     {
         if (curr_num == 0)
             return;
@@ -164,7 +163,7 @@ public:
         {
             decreaseSize();
         }
-        (arr[hashFunc(getKey(value), size)]).deleteVal(value);
+        (arr[hashFunc(key, size)]).deleteVal(key);
         curr_num--;
     }
 };
