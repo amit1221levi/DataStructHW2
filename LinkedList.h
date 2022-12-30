@@ -21,10 +21,10 @@ class DoublyLinkedList
     class Node
     {
     public:
-        T data;
+        T& data;
         Node* next;
         Node* prev;
-        Node(T val): data(val), next(nullptr), prev(nullptr) {}
+        Node(T& val): data(val), next(nullptr), prev(nullptr) {}
     };
 public:
     Node *head;//the first node of the list

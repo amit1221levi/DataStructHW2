@@ -22,9 +22,9 @@ public:
     int size;// the hash table size, initailized with size 10
     int curr_num;//the current number of elements in the hash
     int growth_factor;//10
-    int (*getKey)(T);
+    int (*getKey)(T&);
     //the hash table is a dynamic array of double linked list of T
-    HashTable(int (*f)(T)) : size(10), curr_num(0), growth_factor(10), getKey(f)
+    HashTable(int (*f)(T&)) : size(10), curr_num(0), growth_factor(10), getKey(f)
     {
         arr = new DoublyLinkedList<T>[size];
         for (int i = 0; i < size; i++)

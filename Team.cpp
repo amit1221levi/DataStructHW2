@@ -7,12 +7,11 @@ Team::Team(int id) :
     ability(0), 
     playedGames(0), 
     numOfGoalKeepers(0), 
-    teamSpirit(permutation_t::neutral()),
     isActive(true),
-    players(new UnionFind<Player>(0)){}
+    ufNode(new TeamNode(this, nullptr)){}
 
 Team::~Team(){
-    delete players;
+    delete ufNode;
 }
 
 int Team::getId() const{
@@ -52,7 +51,7 @@ void Team::setNumOfGoalKeepers(int goalKeepers){
 }
 
 permutation_t Team::getTeamSpirit() const{
-    return teamSpirit;
+    return ufNode->getTeamSpirit();
 }
 
 void addPlayer(Player* player){
@@ -64,5 +63,5 @@ void Team::deactivateTeam(){
 }
 
 int Team::getTeamSpiritualStrength() const{
-    return teamSpirit.strength();
+    return this->getTeamSpirit().strength();
 }

@@ -39,10 +39,8 @@ class Team{
     int ability;
     int playedGames;
     int numOfGoalKeepers;
-    permutation_t teamSpirit;
     bool isActive;
-
-    UnionFind<Player>* players; 
+    TeamNode* ufNode;
 };
 
 

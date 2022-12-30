@@ -13,41 +13,35 @@ class Player{
     explicit Player(
         int id, 
         permutation_t spirit = permutation_t::neutral(),
-        int gamesPlayed = 0, int ability = 0, 
+        int numGames = 0, int ability = 0, 
         int cards = 0, 
         permutation_t teamSpiritUntilPlayer = permutation_t:: neutral());
-    //TODO: Change according to implemantation
-    ~Player() = default;
+    ~Player();
     Player(const Team&) = delete;
     Player& operator=(const Player&) = delete;
 
     //Getters & Setters
+    int getId() const;
     permutation_t getSpirit() const;
-    int getGamesPlayed() const; // Not including games stored at the team
-    void setGamesPlayed(int games);
     int getAbility() const;
+    int getLocalGames() const;
     void setAbility(int ability);
     int getCards() const;
     void setCards(int cards);
-    permutation_t getTeamSpiritUntilPlayer() const;
-    void setTeamSpiritUntilPlayer(permutation_t spirit);
+
+    //Interface
+    permutation_t getTeamSpiritUntilPlayer();
+    int getGames();
 
     private:
     int id;
     permutation_t spirit;
-    int gamesPlayed;
+    int numGames;
     int ability;
     int cards;
-    permutation_t teamSpiritUntilPlayer; //Including this player
-
-
-    Team* team;
-    UnionFind<Player>* ufTeam; 
-
-
+    PlayerNode* ufPlayer; 
 };
 
-
-
+int getIdFromPlayer(Player& player) {return player.getId();}; //Function for hash interface
 
 #endif //__PLAYER.H

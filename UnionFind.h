@@ -1,5 +1,5 @@
 //
-// Created by amit levi on 21/12/2022.
+// Created by Dan Cohen & amit levi on 21/12/2022.
 ///=============================================================================================
 ///=============================================================================================
 //                         ##      ##     #########
@@ -11,85 +11,86 @@
 ///=============================================================================================
 #ifndef DATASTRUCTHW2_UNIONFIND_H
 #define DATASTRUCTHW2_UNIONFIND_H
+#include "HashTable.h"
+#include "Player.h"
+#include "Team.h"
+#include "RankTree.h"
+#include "wet2util.h"
 
-template <class Data>
-class UnionFind {
-    int* parent;
-    int* rank;
-    Data** data;
-    int size;
+struct PlayerNode
+{
+    //Parameters
+    Player* player;
+    PlayerNode* father;
+    TeamNode* group;
+    permutation_t spiritPath;
+    int gamesPath;
 
-public:
-    UnionFind(int size);
-    ~UnionFind();
-    int Find(int index);
-    void Union(int index1, int index2);
+    //Ctor's & Dtor's
+    PlayerNode(Player* player, PlayerNode* father, TeamNode* group) : player(player), father(father), group(group), spiritPath(permutation_t::neutral()) {}
+    PlayerNode& operator=(const PlayerNode&) = delete;
+    PlayerNode(const PlayerNode&) = delete;
+
+    //Getters & Setters
+    PlayerNode* getFather();
+    void setFather(PlayerNode* node);
+    Player* getPlayer();
+    void setGroup(TeamNode* group);
+    TeamNode* getGroup();
+    permutation_t getSpiritPath();
+    void setSpiritPath(permutation_t path);
+    int getGamesPath() const;
+    void setGamesPath(int games);
+
+    //Interface
+    int getOverAllGames();
+    permutation_t getSpiritUntilPlayer();
+
 };
 
-//=============================================================================================
-///=====================================FUNCTIONS======================================================
-//=============================================================================================
+struct TeamNode
+{
+    //Parameters
+    Team* team;
+    PlayerNode* root;
+    int size;
+    permutation_t teamSpirit; // Team spirit for all players
+    int games;
 
-///=======================================UnionFind======================================================
-template <class Data>
-UnionFind<Data>::UnionFind(int size) :parent(new int[size]), rank(new int[size]), data(new Data* [size]), size(size) {
-    for (int i = 0; i < size; i++) {
-        parent[i] = i;
-        data[i] = new Data(i);
-        rank[i] = 1;
-    }
+    //Ctor's & Dtor's
+    TeamNode(
+        Team* team, 
+        PlayerNode* root,
+        int size = 0,
+        permutation_t spirit = permutation_t::neutral(),
+        int games = 0
+        ) : team(team), root(root), size(size), teamSpirit(spirit), games(games) {}
+    TeamNode(const TeamNode&) = delete;
+    TeamNode& operator=(const TeamNode&) = delete;
+    ~TeamNode() = default;
 
-}
+    //Setters & Getters
+    int getSize() const;
+    PlayerNode* getRoot();
+    void setRoot(PlayerNode* node);
+    Team* getTeam();
+    void setTeamSpirit(permutation_t spirit);
+    permutation_t getTeamSpirit() const;
+    int getGames() const;
+    void setGames(int games);
 
-///====================================~UnionFind======================================================
-template <class Data>
-UnionFind<Data>::~UnionFind() {
-    for (int i = 0; i < size; i++) {
-        delete data[i];
-    }
-}
+    //Interface
+    void addPlayer(PlayerNode* player);
+};
 
-///=======================================Find======================================================
-template <class Data>
-int UnionFind<Data>::Find(int index) {
-    if (index < 0 || index >= size)return -1;
-    if (parent[index] == index)return index;
-    parent[index] = Find(parent[index]);
-    return parent[index];
-}
+//Unites the first with the second team.
+//User is responisble to erase second teams pointer.
+//Creates a new Team Node
+//Adavancing through tree applies permutation from left a->b = p(b)*p(a)
+TeamNode* UnionTeams(TeamNode* firstTeam,TeamNode* secondTeam);
 
-///=======================================UNION======================================================
-template <class Data>
-void UnionFind<Data>::Union(int index1, int index2) {
-    if (index1 == index2)return;
-    int root1 = Find(index1);
-    int root2 = Find(index2);
-    if (root1 == -1 || root2 == -1)return;
-    if (root1 == root2)return;
-    int size1 = rank[root1];
-    int size2 = rank[root2];
-    if (size1 >= size2) {
-        parent[root2] = root1;
-        rank[root1] += rank[root2];
-    }
-    else {
-        parent[root1] = root2;
-        rank[root2] += rank[root1];
-    }
-}
+TeamNode* findTeam(PlayerNode* player);
 
-//=============================================================================================
-///=====================================FUNCTIONS======================================================
-//=============================================================================================
+
 
 #endif //DATASTRUCTHW2_UNIONFIND_H
-
-///=============================================================================================
-///=============================================================================================
-//                         ##      ##     #########
-//                         ##      ##     ##
-//                         ##      ##     ########
-//                         ##      ##     ##
-//                         ##########     ##
-///=============================================================================================
-///=============================================================================================

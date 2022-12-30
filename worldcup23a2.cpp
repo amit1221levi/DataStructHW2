@@ -1,14 +1,8 @@
 #include "worldcup23a2.h"
 
-world_cup_t::world_cup_t()
-{
-	// TODO: Your code goes here
-}
+world_cup_t::world_cup_t() : hash(getIdFromPlayer) {}
 
-world_cup_t::~world_cup_t()
-{
-	// TODO: Your code goes here
-}
+world_cup_t::~world_cup_t() {}
 
 StatusType world_cup_t::add_team(int teamId)
 {
