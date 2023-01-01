@@ -31,8 +31,8 @@ public:
 
     AVLNode();
 
-    V* data;
     K key;
+    V* data;
     int rank;//will help us to find the index of a certain value
     AVLNode* left_node;
     AVLNode* right_node;

@@ -67,5 +67,5 @@ bool Player::isPlayerGoalKeeper() const{
     return goalKeeper;
 }
 
-int getIdFromPlayer(Player* player) {return player->getId();};
+int getIdFromPlayer(Player* player) {return player->getId();}
 
