@@ -1,4 +1,5 @@
 #include "UnionFind.h"
+
 //Setters & Getters
 PlayerNode* PlayerNode::getFather(){
     return this->father;
@@ -151,6 +152,8 @@ TeamNode* UnionTeams(TeamNode* firstTeam,TeamNode* secondTeam)
         unitedTeam->setGames(firstTeam->getGames());
         
     }
+    firstTeam->getTeam()->setUfNode(unitedTeam);
+    secondTeam->getTeam()->setUfNode(nullptr);
     delete firstTeam;
     delete secondTeam;
     return unitedTeam;

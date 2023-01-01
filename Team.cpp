@@ -64,6 +64,7 @@ void Team::setUfNode(TeamNode* ufNode){
 
 void Team::addPlayer(Player* player){
     this->ability = this->getAbility() + player->getAbility();
+    if(player->isPlayerGoalKeeper()) {numOfGoalKeepers++ ;};
     this->ufNode->addPlayer(player->getUfPlayerNode());
 }
 
@@ -84,19 +85,24 @@ int Team::getMatchCapability() const{
 }
 
 int checkMatchResult(Team& first, Team& second){
-    if(first.getMatchCapability() > second.getMatchCapability()){
+    int firstTeamMatchCapability = first.getMatchCapability();
+    int secondTeamMatchCapability =  second.getMatchCapability();
+    if(firstTeamMatchCapability > secondTeamMatchCapability){ //Check who wins by capability
         return 1;
     }
-    else if(first.getMatchCapability() < second.getMatchCapability()){
+    else if(firstTeamMatchCapability < secondTeamMatchCapability){
         return 3;
     }
-    else if(first.getTeamSpiritualStrength() > second.getTeamSpiritualStrength()){
+
+    int firstTeamSpiritualStrength = first.getTeamSpiritualStrength();
+    int secondTeamSpiritualStrength = second.getTeamSpiritualStrength();
+    if(firstTeamSpiritualStrength > secondTeamSpiritualStrength){//Check who wins by spiritual strength
         return 2;
     }
-    else if(first.getTeamSpiritualStrength() < second.getTeamSpiritualStrength()){
+    else if(firstTeamSpiritualStrength < secondTeamSpiritualStrength){
         return 4;
     }
     else{
-        return 0;
+        return 0; // A tie
     }
 }

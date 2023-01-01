@@ -16,7 +16,8 @@ class Player{
         permutation_t spirit = permutation_t::neutral(),
         int numGames = 0, 
         int ability = 0, 
-        int cards = 0);
+        int cards = 0,
+        bool goalKeeper = false);
     ~Player();
     Player(const Team&) = delete;
     Player& operator=(const Player&) = delete;
@@ -35,6 +36,7 @@ class Player{
     permutation_t getTeamSpiritUntilPlayer();
     int getGames();
     bool isPlayerActive();
+    bool isPlayerGoalKeeper() const;
 
     private:
     int id;
@@ -42,6 +44,7 @@ class Player{
     int numGames;
     int ability;
     int cards;
+    bool goalKeeper;
     PlayerNode* ufPlayer; 
 };
 

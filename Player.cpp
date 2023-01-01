@@ -5,12 +5,14 @@
         permutation_t spirit,
         int numGames,
         int ability, 
-        int cards):
+        int cards,
+        bool goalKeeper):
             id(id), 
             spirit(spirit), 
             numGames(numGames),
             ability(ability),
             cards(cards),
+            goalKeeper(goalKeeper),
             ufPlayer(new PlayerNode(this,nullptr,nullptr)){}
 
 Player::~Player(){
@@ -59,6 +61,10 @@ int Player::getGames(){
 
 bool Player::isPlayerActive(){
     return findTeam(this->ufPlayer)->getTeam()->isTeamActive();
+}
+
+bool Player::isPlayerGoalKeeper() const{
+    return goalKeeper;
 }
 
 int getIdFromPlayer(Player* player) {return player->getId();};

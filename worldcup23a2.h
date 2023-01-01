@@ -24,7 +24,7 @@
 
 class world_cup_t {
 private:
-	LinkedList<Team> allTeamsStorage;
+	LinkedList<Team> inActiveTeams;
 	LinkedList<Player> allPlayersStorage;
 	RankTree<int,Team>  teamsById; 
 	RankTree<Pair<int,int>,Team>  teamsByAbility; // Pair should be (ability,id)

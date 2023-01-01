@@ -36,7 +36,6 @@ StatusType world_cup_t::add_team(int teamId)
 	try
 	{
 		teamsByAbility.insert(Pair<int,int> (team->getAbility(),teamId),*team);
-		allTeamsStorage.insert(team);
 	}
 	catch(...)
 	{
@@ -56,6 +55,7 @@ StatusType world_cup_t::remove_team(int teamId)
 		return StatusType::FAILURE;
 	}
 	int ability = teamFoundById->getValue().getAbility();
+	Team& team = teamFoundById->getValue();
 
 	try
 	{
@@ -73,6 +73,7 @@ StatusType world_cup_t::remove_team(int teamId)
 	try
 	{
 		teamsById.remove(teamId);
+		inActiveTeams.insert(&team);
 	}
 	catch(...)
 	{
@@ -92,7 +93,7 @@ StatusType world_cup_t::add_player(int playerId, int teamId,
 	Player* player = nullptr;
 	try
 	{
-		Player* player = new Player(playerId, spirit, gamesPlayed, ability, cards);
+		player = new Player(playerId, spirit, gamesPlayed, ability, cards, goalKeeper);
 		allPlayersStorage.insert(player);
 	}
 	catch(...)
@@ -159,8 +160,10 @@ output_t<int> world_cup_t::play_match(int teamId1, int teamId2)
 	AVLNode<int,Team>* firstTeam = teamsById.find(teamsById.root_node,teamId1);
 	if(firstTeam == nullptr || firstTeam->getValue().getNumOfGoalKeepers() < 1){return StatusType::FAILURE;};
 
-	AVLNode<int,Team>* secondTeam = teamsById.find(teamsById.root_node,teamId1);
+	AVLNode<int,Team>* secondTeam = teamsById.find(teamsById.root_node,teamId2);
 	if(secondTeam == nullptr || secondTeam->getValue().getNumOfGoalKeepers() < 1){return StatusType::FAILURE;};
+	firstTeam->getValue().getUfNode()->setGames(firstTeam->getValue().getUfNode()->getGames()+1);	
+	secondTeam->getValue().getUfNode()->setGames(secondTeam->getValue().getUfNode()->getGames()+1);	
 
 	int result = checkMatchResult(firstTeam->getValue(), secondTeam->getValue());
 	if(result == 1 || result == 2){	//first team wins
@@ -291,7 +294,7 @@ StatusType world_cup_t::buy_team(int teamId1, int teamId2)
 	if(firstTeamNode == nullptr){return StatusType::FAILURE;};
 	Team& firstTeam = firstTeamNode->getValue();
 
-	AVLNode<int,Team>* secondTeamNode = teamsById.find(teamsById.root_node,teamId1);
+	AVLNode<int,Team>* secondTeamNode = teamsById.find(teamsById.root_node,teamId2);
 	if(secondTeamNode == nullptr){return StatusType::FAILURE;};
 	Team& secondTeam = secondTeamNode->getValue();
 	
@@ -303,6 +306,7 @@ StatusType world_cup_t::buy_team(int teamId1, int teamId2)
 		firstTeam.setAbility(firstTeam.getAbility() + secondTeam.getAbility());
 		teamsByAbility.insert(Pair<int,int>(firstTeam.getAbility(),firstTeam.getId()), firstTeam);
 		firstTeam.setUfNode( UnionTeams( firstTeam.getUfNode(), secondTeam.getUfNode() ) );
+		delete &secondTeam;
 	}
 	catch(const std::exception& e)
 	{

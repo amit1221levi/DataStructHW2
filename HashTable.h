@@ -99,7 +99,7 @@ public:
 
 ///========================================find======================================================
     //finds an objcet in the hash table return a pointer to the object
-    V& find(K& key)
+    V find(K key)
     {
         if ((arr[hashFunc(key, size)]).findVal(key) == nullptr)
             throw(NOT_EXIST());
@@ -131,7 +131,7 @@ public:
 
 ///========================================insertElem======================================================
     //insert new element to the hash
-    void insertElem(V& value)
+    void insertElem(V value)
     {
         if ((curr_num / size) >= growth_factor) //alpha>=10
         {

@@ -21,11 +21,11 @@ class DoublyLinkedList
     class Node
     {
     public:
-        V& data;
-        K& key;
+        V data;
+        K key;
         Node* next;
         Node* prev;
-        Node(K& key,V& val): data(val), key(key), next(nullptr), prev(nullptr) {}
+        Node(K key,V val): data(val), key(key), next(nullptr), prev(nullptr) {}
     };
 public:
     Node *head;//the first node of the list
@@ -50,7 +50,7 @@ public:
 
     ///=====================================insert======================================================
     //inseret a new node if its not already existing, inseration occurs in the head of the list therefore the complexity is of O(1)
-    void insert(K key,V& val)
+    void insert(K key,V val)
     {
         if(findVal(key)!=nullptr)
         {
@@ -71,7 +71,7 @@ public:
     }
 ///=====================================deleteVal======================================================
     //remove a node if its existing, removal demends going through all of the list therefore the complexity is of O(n)
-    void deleteVal(K& key)
+    void deleteVal(K key)
     {
         Node* find = findVal(key);
         if(find==nullptr)
@@ -111,7 +111,7 @@ public:
     }
 
 ///=====================================findVal======================================================
-    Node *findVal(K& key) //returns node of the given value
+    Node *findVal(K key) //returns node of the given value
     {
         Node *node = head;
         while(node != nullptr)
