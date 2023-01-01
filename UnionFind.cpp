@@ -143,10 +143,10 @@ TeamNode* UnionTeams(TeamNode* firstTeam,TeamNode* secondTeam)
     else{   //Second team is bigger than first team
         firstTeam->getRoot()->setFather(secondTeam->getRoot());
         firstTeam->getRoot()->setGroup(nullptr);
-        firstTeam->getRoot()->spiritPath = secondTeam->getRoot()->getSpiritPath().inv() * firstTeam->getRoot()->getSpiritPath();
-        firstTeam->getRoot()->gamesPath = firstTeam->getRoot()->getGamesPath() - secondTeam->getRoot()->getGamesPath() - secondTeam->getGames(); 
+        firstTeam->getRoot()->gamesPath = firstTeam->getRoot()->getGamesPath() - secondTeam->getRoot()->getGamesPath() - secondTeam->getGames() + firstTeam->getGames(); 
         secondTeam->getRoot()->spiritPath = firstTeam->getTeam()->getTeamSpirit() * secondTeam->getRoot()->spiritPath;
         secondTeam->getRoot()->gamesPath = secondTeam->getRoot()->getGamesPath() + secondTeam->getGames() - firstTeam->getGames();
+        firstTeam->getRoot()->spiritPath = secondTeam->getRoot()->getSpiritPath().inv() * firstTeam->getRoot()->getSpiritPath();
         secondTeam->getRoot()->setGroup(unitedTeam);
         unitedTeam ->setRoot(secondTeam->getRoot());
         unitedTeam->setGames(firstTeam->getGames());
