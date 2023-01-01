@@ -12,6 +12,7 @@
 #ifndef DATASTRUCTHW2_RANKTREE_H
 #define DATASTRUCTHW2_RANKTREE_H
 #include <iostream>
+#include "LinkedListOneSide.h"
 template <class K,class V>
 class AVLNode
 {
@@ -57,9 +58,11 @@ public:
     AVLNode<K,V>* rotateRight(AVLNode<K,V>* root);
     void print_inOrder(AVLNode<K,V>* root) const; // Left, Parent, Right
     void deleteAVLNode(AVLNode<K,V>* node);
+    void deleteTreeData();
     AVLNode<K,V>* min_value_node(AVLNode<K,V>* node);
     void insertAVLNode(AVLNode<K,V>* root, AVLNode<K,V>* ins);
     AVLNode<K,V>* deleteNode(AVLNode<K,V>* root, K key);
+    void dataToList(LinkedList<V>& list,AVLNode<K,V>* node);
     V& select(int k);
     V& selectNode(AVLNode<K,V>* root, int k);
 
@@ -95,6 +98,21 @@ void RankTree<K,V>::deleteAVLNode(AVLNode<K,V>* node)
         delete node; // Post Order Deletion
     }
 }
+
+///=====================================~dataToList======================================================
+template <class K,class V>
+void RankTree<K,V>::dataToList(LinkedList<V>& list,AVLNode<K,V>* node)
+{
+    if (node)
+    {
+        if (node->getRight() != nullptr)
+            dataToList(list,node->getRight());
+        if (node->getLeft() != nullptr)
+            dataToList(list,node->getLeft());
+        list.insert(node->data); // Post Order Deletion
+    }
+}
+
 
 ///=====================================~RankTree======================================================
 template <class K,class V>

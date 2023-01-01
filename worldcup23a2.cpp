@@ -2,7 +2,10 @@
 
 world_cup_t::world_cup_t() : hash(getIdFromPlayer) {}
 
-world_cup_t::~world_cup_t() {}
+world_cup_t::~world_cup_t()
+{
+	this->teamsById.dataToList(this->activeTeamStorage,this->teamsById.get_root());
+}
 
 StatusType world_cup_t::add_team(int teamId)
 {

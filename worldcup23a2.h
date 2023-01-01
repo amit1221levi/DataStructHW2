@@ -24,6 +24,7 @@
 
 class world_cup_t {
 private:
+	LinkedList<Team> activeTeamStorage;
 	LinkedList<Team> inActiveTeams;
 	LinkedList<Player> allPlayersStorage;
 	RankTree<int,Team>  teamsById; 
