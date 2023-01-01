@@ -93,6 +93,10 @@ StatusType world_cup_t::add_player(int playerId, int teamId,
 	{
 		return StatusType::INVALID_INPUT;
 	}
+
+	AVLNode<int,Team>* teamFoundById = teamsById.find(teamsById.root_node,teamId);
+	if(teamFoundById == nullptr) {return StatusType::FAILURE;}; //Check if team id exists
+	
 	Player* player = nullptr;
 	try
 	{
@@ -103,9 +107,6 @@ StatusType world_cup_t::add_player(int playerId, int teamId,
 		delete player;
 		return StatusType::ALLOCATION_ERROR;
 	}
-
-	AVLNode<int,Team>* teamFoundById = teamsById.find(teamsById.root_node,teamId);
-	if(teamFoundById == nullptr) {return StatusType::FAILURE;}; //Check if team id exists
 
 	//TODO: Bad Hash interface. Check.
 	//Insert Player to hash
