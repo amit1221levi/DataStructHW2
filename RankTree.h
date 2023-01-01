@@ -504,7 +504,7 @@ AVLNode<K,V>* RankTree<K,V>::deleteNode(AVLNode<K,V>* root, K key)
                 *root = *node_temp;
                 root->setParent(temp2);
             }
-            free(node_temp);
+            delete node_temp;
         }
         else
         {

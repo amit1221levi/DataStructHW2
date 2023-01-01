@@ -16,7 +16,7 @@
             ufPlayer(new PlayerNode(this,nullptr,nullptr)){}
 
 Player::~Player(){
-    delete ufPlayer;
+    if(ufPlayer) {delete ufPlayer;}
 }
 
 int Player::getId() const{

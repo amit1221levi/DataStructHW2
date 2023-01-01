@@ -94,7 +94,6 @@ StatusType world_cup_t::add_player(int playerId, int teamId,
 	try
 	{
 		player = new Player(playerId, spirit, gamesPlayed, ability, cards, goalKeeper);
-		allPlayersStorage.insert(player);
 	}
 	catch(...)
 	{
@@ -110,6 +109,7 @@ StatusType world_cup_t::add_player(int playerId, int teamId,
 	try
 	{
 		hash.insertElem(player);
+		
 	}
 	catch(DoublyLinkedList<int,Player*>::ALREADY_EXIST)//Check if player already existes
 	{
@@ -121,6 +121,16 @@ StatusType world_cup_t::add_player(int playerId, int teamId,
 		delete player;
 		return StatusType::ALLOCATION_ERROR;
 	}
+	try
+	{
+		allPlayersStorage.insert(player);
+	}
+	catch(...)
+	{
+		return StatusType::ALLOCATION_ERROR;
+	}
+	
+
 
 	int previousAbility = teamFoundById->getValue().getAbility();
 	try //Remove team by ability. Before reinsertion
