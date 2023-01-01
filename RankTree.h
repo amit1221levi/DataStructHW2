@@ -43,7 +43,7 @@ template <class K,class V>
 class RankTree
 {
 public:
-    RankTree() : root_node(nullptr) {}
+    RankTree() : root_node(nullptr),numberOfNodes(0) {}
     ~RankTree();
     void insert(K key,V& value);
     void remove(const K key);
@@ -62,7 +62,9 @@ public:
     AVLNode<K,V>* deleteNode(AVLNode<K,V>* root, K key);
     V& select(int k);
     V& selectNode(AVLNode<K,V>* root, int k);
+
     AVLNode<K,V>* root_node;
+    int numberOfNodes;
     class ALREADY_EXIST
     {
     };
@@ -122,6 +124,7 @@ void RankTree<K,V>::insert(K key,V& value)
         insertAVLNode(root_node, new_node);
     }
     fixNodeParent(root_node, key);
+    numberOfNodes++;
 }
 
 ///=====================================rotateLeft======================================================
@@ -423,8 +426,10 @@ void RankTree<K,V>::remove(const K key)
     {
         throw(RankTree<K,V>::NOT_EXIST());
     }
-    if (!deleteNode(root_node, key))
+    if (!deleteNode(root_node, key)){
         root_node = nullptr;
+    }
+    numberOfNodes--;
 }
 
 ///====================================min_value_node======================================================
@@ -544,7 +549,7 @@ V& RankTree<K,V>::select(int k)
 {
     if (root_node == nullptr || k > (root_node->rank))
         throw(NOT_EXIST());
-    return selectNode(root_node, (root_node->rank) - k + 1);//sucsses for sure
+    return selectNode(root_node, (k));//sucsses for sure
 }
 
 #endif //DATASTRUCTHW2_RANKTREE_H

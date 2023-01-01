@@ -233,7 +233,7 @@ output_t<int> world_cup_t::get_player_cards(int playerId)
 output_t<int> world_cup_t::get_team_points(int teamId)
 {
 	if(teamId <= 0){
-		output_t<int>(StatusType::INVALID_INPUT);
+		return output_t<int>(StatusType::INVALID_INPUT);
 	}
 	try
 	{
@@ -251,8 +251,8 @@ output_t<int> world_cup_t::get_team_points(int teamId)
 
 output_t<int> world_cup_t::get_ith_pointless_ability(int i)
 {
-	if(i < 0){
-		output_t<int>(StatusType::FAILURE);
+	if(i < 0 || teamsByAbility.numberOfNodes <= i || teamsByAbility.numberOfNodes == 0){
+		return output_t<int>(StatusType::FAILURE);
 	}
 	try
 	{
@@ -261,13 +261,12 @@ output_t<int> world_cup_t::get_ith_pointless_ability(int i)
 	}
 	catch(RankTree<Pair<int,int>,Team>::NOT_EXIST())
 	{
-		output_t<int>(StatusType::FAILURE);
+		return output_t<int>(StatusType::FAILURE);
 	}
 	catch(...){
-		output_t<int>(StatusType::ALLOCATION_ERROR);
+		return output_t<int>(StatusType::ALLOCATION_ERROR);
 	}
-	
-	return 12345;
+	return output_t<int>(StatusType::FAILURE);
 }
 
 output_t<permutation_t> world_cup_t::get_partial_spirit(int playerId)
@@ -283,6 +282,7 @@ output_t<permutation_t> world_cup_t::get_partial_spirit(int playerId)
 	{
 		return StatusType::FAILURE;
 	}
+	if( !player->isPlayerActive()) {return StatusType::FAILURE;};
 	return output_t<permutation_t>(player->getTeamSpiritUntilPlayer());
 }
 
