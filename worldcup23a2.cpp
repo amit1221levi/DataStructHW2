@@ -321,9 +321,11 @@ StatusType world_cup_t::buy_team(int teamId1, int teamId2)
 		teamsByAbility.remove(Pair<int,int>(secondTeam.getAbility(),secondTeam.getId()));
 		teamsById.remove(secondTeam.getId());
 		firstTeam.setAbility(firstTeam.getAbility() + secondTeam.getAbility());
+		firstTeam.setNumOfGoalKeepers(firstTeam.getNumOfGoalKeepers()+secondTeam.getNumOfGoalKeepers());
+		firstTeam.setPoints(firstTeam.getPoints() + secondTeam.getPoints());
 		teamsByAbility.insert(Pair<int,int>(firstTeam.getAbility(),firstTeam.getId()), firstTeam);
 		firstTeam.setUfNode( UnionTeams( firstTeam.getUfNode(), secondTeam.getUfNode() ) );
-		firstTeam.setNumOfGoalKeepers(firstTeam.getNumOfGoalKeepers()+secondTeam.getNumOfGoalKeepers());
+		
 		delete &secondTeam;
 	}
 	catch(const std::exception& e)
