@@ -1,0 +1,75 @@
+add_team: SUCCESS
+add_team: SUCCESS
+add_team: SUCCESS
+remove_team: SUCCESS
+remove_team: FAILURE
+remove_team: FAILURE
+add_player: SUCCESS
+add_player: SUCCESS
+add_player: SUCCESS
+add_player: SUCCESS
+add_player: SUCCESS
+num_played_games_for_player: SUCCESS, 2
+num_played_games_for_player: SUCCESS, 3
+num_played_games_for_player: SUCCESS, 1
+num_played_games_for_player: SUCCESS, 2
+play_match: FAILURE
+play_match: FAILURE
+add_player: SUCCESS
+play_match: INVALID_INPUT
+play_match: INVALID_INPUT
+play_match: INVALID_INPUT
+play_match: FAILURE
+play_match: FAILURE
+play_match: FAILURE
+play_match: SUCCESS, 3
+get_team_points: SUCCESS, 0
+get_team_points: SUCCESS, 3
+add_player: SUCCESS
+play_match: SUCCESS, 4
+get_team_points: SUCCESS, 0
+get_team_points: SUCCESS, 6
+num_played_games_for_player: INVALID_INPUT
+num_played_games_for_player: SUCCESS, 5
+num_played_games_for_player: FAILURE
+remove_team: SUCCESS
+num_played_games_for_player: SUCCESS, 5
+add_player_cards: INVALID_INPUT
+add_player_cards: INVALID_INPUT
+add_player_cards: INVALID_INPUT
+add_player_cards: FAILURE
+add_player_cards: FAILURE
+add_player_cards: SUCCESS
+add_player_cards: SUCCESS
+get_player_cards: INVALID_INPUT
+get_player_cards: INVALID_INPUT
+get_player_cards: FAILURE
+get_player_cards: SUCCESS, 7
+get_player_cards: SUCCESS, 2
+get_player_cards: SUCCESS, 1
+get_team_points: INVALID_INPUT
+get_team_points: FAILURE
+get_team_points: SUCCESS, 0
+get_team_points: SUCCESS, 0
+get_ith_pointless_ability: FAILURE
+get_ith_pointless_ability: FAILURE
+get_ith_pointless_ability: SUCCESS, 1
+add_team: SUCCESS
+get_ith_pointless_ability: SUCCESS, 1
+get_partial_spirit: INVALID_INPUT
+get_partial_spirit: FAILURE
+get_partial_spirit: FAILURE
+get_partial_spirit: SUCCESS, 2,3,4,5,1
+get_partial_spirit: SUCCESS, 3,5,4,2,1
+buy_team: INVALID_INPUT
+buy_team: INVALID_INPUT
+buy_team: INVALID_INPUT
+buy_team: FAILURE
+buy_team: FAILURE
+buy_team: SUCCESS
+buy_team: FAILURE
+get_ith_pointless_ability: FAILURE
+get_ith_pointless_ability: SUCCESS, 2
+get_team_points: SUCCESS, 0
+get_team_points: FAILURE
+get_partial_spirit: SUCCESS, 3,5,4,2,1

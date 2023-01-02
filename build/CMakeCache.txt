@@ -153,7 +153,22 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=DataStructHW2
+CMAKE_PROJECT_NAME:STATIC=Worldcup
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION:STATIC=0.1.0
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_MAJOR:STATIC=0
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_MINOR:STATIC=1
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_PATCH:STATIC=0
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_TWEAK:STATIC=
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=C:/TDM-GCC-64/bin/ranlib.exe
@@ -243,6 +258,15 @@ DataStructHW2_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 DataStructHW2_SOURCE_DIR:STATIC=C:/Users/USER/OneDrive - Technion/Desktop/Study/CS/234218-Data Structure 1/HW/wet2/src/DataStructHW2
+
+//Value Computed by CMake
+Worldcup_BINARY_DIR:STATIC=C:/Users/USER/OneDrive - Technion/Desktop/Study/CS/234218-Data Structure 1/HW/wet2/src/DataStructHW2/build
+
+//Value Computed by CMake
+Worldcup_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+Worldcup_SOURCE_DIR:STATIC=C:/Users/USER/OneDrive - Technion/Desktop/Study/CS/234218-Data Structure 1/HW/wet2/src/DataStructHW2
 
 
 ########################

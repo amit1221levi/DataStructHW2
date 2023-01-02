@@ -24,7 +24,7 @@ public:
     int growth_factor;//10
     int (*getKey)(V);
     //the hash table is a dynamic array of double linked list of T
-    HashTable(int (*f)(V)) : size(10), curr_num(0), growth_factor(10), getKey(f)
+    HashTable(int (*f)(V)) :arr(nullptr), size(10), curr_num(0), growth_factor(10), getKey(f)
     {
         arr = new DoublyLinkedList<K,V>[size];
         for (int i = 0; i < size; i++)
@@ -126,6 +126,7 @@ public:
                 curr = curr->next;
             }
         }
+        delete[] arr;
         this->arr = new_arr;
     }
 

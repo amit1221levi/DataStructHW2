@@ -9,7 +9,7 @@
 					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.21"
+						"string" : "3.0.0"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "DataStructHW2",
+					"name" : "Worldcup",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "DataStructHW2::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-DataStructHW2-Debug-4ea127a8ad7c4c644c92.json",
-					"name" : "DataStructHW2",
+					"id" : "main::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main-Debug-ed2ce23f042c0c1d3718.json",
+					"name" : "main",
 					"projectIndex" : 0
 				}
 			]

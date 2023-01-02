@@ -1,7 +1,27 @@
 [
 {
   "directory": "C:/Users/USER/OneDrive - Technion/Desktop/Study/CS/234218-Data Structure 1/HW/wet2/src/DataStructHW2/build",
-  "command": "C:\\TDM-GCC-64\\bin\\g++.exe   -g -std=gnu++14 -o CMakeFiles\\DataStructHW2.dir\\main.cpp.obj -c \"C:\\Users\\USER\\OneDrive - Technion\\Desktop\\Study\\CS\\234218-Data Structure 1\\HW\\wet2\\src\\DataStructHW2\\main.cpp\"",
-  "file": "C:/Users/USER/OneDrive - Technion/Desktop/Study/CS/234218-Data Structure 1/HW/wet2/src/DataStructHW2/main.cpp"
+  "command": "C:\\TDM-GCC-64\\bin\\g++.exe   -g -std=gnu++11 -o CMakeFiles\\main.dir\\main23a2.cpp.obj -c \"C:\\Users\\USER\\OneDrive - Technion\\Desktop\\Study\\CS\\234218-Data Structure 1\\HW\\wet2\\src\\DataStructHW2\\main23a2.cpp\"",
+  "file": "C:/Users/USER/OneDrive - Technion/Desktop/Study/CS/234218-Data Structure 1/HW/wet2/src/DataStructHW2/main23a2.cpp"
+},
+{
+  "directory": "C:/Users/USER/OneDrive - Technion/Desktop/Study/CS/234218-Data Structure 1/HW/wet2/src/DataStructHW2/build",
+  "command": "C:\\TDM-GCC-64\\bin\\g++.exe   -g -std=gnu++11 -o CMakeFiles\\main.dir\\Player.cpp.obj -c \"C:\\Users\\USER\\OneDrive - Technion\\Desktop\\Study\\CS\\234218-Data Structure 1\\HW\\wet2\\src\\DataStructHW2\\Player.cpp\"",
+  "file": "C:/Users/USER/OneDrive - Technion/Desktop/Study/CS/234218-Data Structure 1/HW/wet2/src/DataStructHW2/Player.cpp"
+},
+{
+  "directory": "C:/Users/USER/OneDrive - Technion/Desktop/Study/CS/234218-Data Structure 1/HW/wet2/src/DataStructHW2/build",
+  "command": "C:\\TDM-GCC-64\\bin\\g++.exe   -g -std=gnu++11 -o CMakeFiles\\main.dir\\Team.cpp.obj -c \"C:\\Users\\USER\\OneDrive - Technion\\Desktop\\Study\\CS\\234218-Data Structure 1\\HW\\wet2\\src\\DataStructHW2\\Team.cpp\"",
+  "file": "C:/Users/USER/OneDrive - Technion/Desktop/Study/CS/234218-Data Structure 1/HW/wet2/src/DataStructHW2/Team.cpp"
+},
+{
+  "directory": "C:/Users/USER/OneDrive - Technion/Desktop/Study/CS/234218-Data Structure 1/HW/wet2/src/DataStructHW2/build",
+  "command": "C:\\TDM-GCC-64\\bin\\g++.exe   -g -std=gnu++11 -o CMakeFiles\\main.dir\\UnionFind.cpp.obj -c \"C:\\Users\\USER\\OneDrive - Technion\\Desktop\\Study\\CS\\234218-Data Structure 1\\HW\\wet2\\src\\DataStructHW2\\UnionFind.cpp\"",
+  "file": "C:/Users/USER/OneDrive - Technion/Desktop/Study/CS/234218-Data Structure 1/HW/wet2/src/DataStructHW2/UnionFind.cpp"
+},
+{
+  "directory": "C:/Users/USER/OneDrive - Technion/Desktop/Study/CS/234218-Data Structure 1/HW/wet2/src/DataStructHW2/build",
+  "command": "C:\\TDM-GCC-64\\bin\\g++.exe   -g -std=gnu++11 -o CMakeFiles\\main.dir\\worldcup23a2.cpp.obj -c \"C:\\Users\\USER\\OneDrive - Technion\\Desktop\\Study\\CS\\234218-Data Structure 1\\HW\\wet2\\src\\DataStructHW2\\worldcup23a2.cpp\"",
+  "file": "C:/Users/USER/OneDrive - Technion/Desktop/Study/CS/234218-Data Structure 1/HW/wet2/src/DataStructHW2/worldcup23a2.cpp"
 }
 ]

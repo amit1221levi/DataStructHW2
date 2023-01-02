@@ -116,41 +116,137 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named DataStructHW2
+# Target rules for targets named main
 
 # Build rule for target.
-DataStructHW2: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 DataStructHW2
-.PHONY : DataStructHW2
+main: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 main
+.PHONY : main
 
 # fast build rule for target.
-DataStructHW2/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataStructHW2.dir\build.make CMakeFiles/DataStructHW2.dir/build
-.PHONY : DataStructHW2/fast
+main/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/build
+.PHONY : main/fast
 
-main.obj: main.cpp.obj
-.PHONY : main.obj
+Player.obj: Player.cpp.obj
+.PHONY : Player.obj
 
 # target to build an object file
-main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataStructHW2.dir\build.make CMakeFiles/DataStructHW2.dir/main.cpp.obj
-.PHONY : main.cpp.obj
+Player.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/Player.cpp.obj
+.PHONY : Player.cpp.obj
 
-main.i: main.cpp.i
-.PHONY : main.i
+Player.i: Player.cpp.i
+.PHONY : Player.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataStructHW2.dir\build.make CMakeFiles/DataStructHW2.dir/main.cpp.i
-.PHONY : main.cpp.i
+Player.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/Player.cpp.i
+.PHONY : Player.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+Player.s: Player.cpp.s
+.PHONY : Player.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\DataStructHW2.dir\build.make CMakeFiles/DataStructHW2.dir/main.cpp.s
-.PHONY : main.cpp.s
+Player.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/Player.cpp.s
+.PHONY : Player.cpp.s
+
+Team.obj: Team.cpp.obj
+.PHONY : Team.obj
+
+# target to build an object file
+Team.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/Team.cpp.obj
+.PHONY : Team.cpp.obj
+
+Team.i: Team.cpp.i
+.PHONY : Team.i
+
+# target to preprocess a source file
+Team.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/Team.cpp.i
+.PHONY : Team.cpp.i
+
+Team.s: Team.cpp.s
+.PHONY : Team.s
+
+# target to generate assembly for a file
+Team.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/Team.cpp.s
+.PHONY : Team.cpp.s
+
+UnionFind.obj: UnionFind.cpp.obj
+.PHONY : UnionFind.obj
+
+# target to build an object file
+UnionFind.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/UnionFind.cpp.obj
+.PHONY : UnionFind.cpp.obj
+
+UnionFind.i: UnionFind.cpp.i
+.PHONY : UnionFind.i
+
+# target to preprocess a source file
+UnionFind.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/UnionFind.cpp.i
+.PHONY : UnionFind.cpp.i
+
+UnionFind.s: UnionFind.cpp.s
+.PHONY : UnionFind.s
+
+# target to generate assembly for a file
+UnionFind.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/UnionFind.cpp.s
+.PHONY : UnionFind.cpp.s
+
+main23a2.obj: main23a2.cpp.obj
+.PHONY : main23a2.obj
+
+# target to build an object file
+main23a2.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main23a2.cpp.obj
+.PHONY : main23a2.cpp.obj
+
+main23a2.i: main23a2.cpp.i
+.PHONY : main23a2.i
+
+# target to preprocess a source file
+main23a2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main23a2.cpp.i
+.PHONY : main23a2.cpp.i
+
+main23a2.s: main23a2.cpp.s
+.PHONY : main23a2.s
+
+# target to generate assembly for a file
+main23a2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/main23a2.cpp.s
+.PHONY : main23a2.cpp.s
+
+worldcup23a2.obj: worldcup23a2.cpp.obj
+.PHONY : worldcup23a2.obj
+
+# target to build an object file
+worldcup23a2.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/worldcup23a2.cpp.obj
+.PHONY : worldcup23a2.cpp.obj
+
+worldcup23a2.i: worldcup23a2.cpp.i
+.PHONY : worldcup23a2.i
+
+# target to preprocess a source file
+worldcup23a2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/worldcup23a2.cpp.i
+.PHONY : worldcup23a2.cpp.i
+
+worldcup23a2.s: worldcup23a2.cpp.s
+.PHONY : worldcup23a2.s
+
+# target to generate assembly for a file
+worldcup23a2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\main.dir\build.make CMakeFiles/main.dir/worldcup23a2.cpp.s
+.PHONY : worldcup23a2.cpp.s
 
 # Help Target
 help:
@@ -160,10 +256,22 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... DataStructHW2
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... main
+	@echo ... Player.obj
+	@echo ... Player.i
+	@echo ... Player.s
+	@echo ... Team.obj
+	@echo ... Team.i
+	@echo ... Team.s
+	@echo ... UnionFind.obj
+	@echo ... UnionFind.i
+	@echo ... UnionFind.s
+	@echo ... main23a2.obj
+	@echo ... main23a2.i
+	@echo ... main23a2.s
+	@echo ... worldcup23a2.obj
+	@echo ... worldcup23a2.i
+	@echo ... worldcup23a2.s
 .PHONY : help
 
 
